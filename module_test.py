@@ -7,7 +7,6 @@ from hand_module import HandDetector
 from directkeys import space_pressed
 from directkeys import PressKey, ReleaseKey
 
-key = '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'
 # Define a callback function to handle the key press event
 def on_space_pressed(event):
     if event.name == 'space':
