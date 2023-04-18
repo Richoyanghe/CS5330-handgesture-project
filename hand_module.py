@@ -76,6 +76,8 @@ class HandDetector:
             left_thumb_up = leftOrRight == 'left' and self.land_mark_list[self.tips_id_list[0]][1] < self.land_mark_list[self.tips_id_list[0]-1][1]
             right_thumb_up = leftOrRight == 'right' and self.land_mark_list[self.tips_id_list[0]][1] > self.land_mark_list[self.tips_id_list[0]-1][1]
 
+            direction = 'right' if left_thumb_up else 'left'
+
             if left_thumb_up or right_thumb_up:
                 fingers_counter.append(1)
             else:
@@ -89,6 +91,6 @@ class HandDetector:
                 else:
                     fingers_counter.append(0)
 
-            return fingers_counter
+            return fingers_counter, direction
 
-        return None
+        return None, ''
