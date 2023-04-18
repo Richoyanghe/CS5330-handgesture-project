@@ -18,6 +18,8 @@ space_key_pressed = space_pressed
 time.sleep(2.0)
 current_key_pressed = set()
 
+isPaused = True
+
 cap = cv2.VideoCapture(0)
 handDetector = HandDetector()
 
@@ -41,14 +43,25 @@ while True:
 
     if fingers_up != None:
         max_fingers_up = fingers_up.count(1)
+        status = 'Pause' if isPaused else 'Resume'
         cv2.putText(image, f'Fingers up: {str(max_fingers_up)}', (100, 100), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 255), 2)
+        cv2.putText(image, f'Game: {status}', (150, 150), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 255), 2)
 
     # print(fingers_up)
     # print(land_mark_list)
     keyboard.on_press_key('space', on_space_pressed)
 
-    if fingers_up == [0,0,0,0,0]:
-        cv2.putText(image, 'Action: pause', (120, 120), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 255), 2)
+    if fingers_up == [0,0,0,0,0] and not isPaused:
+        isPaused = True
+        PressKey(space_key_pressed)
+        spacePressed = True
+        current_key_pressed.add(space_key_pressed)
+        key_pressed = space_key_pressed
+        keyPressed = True
+        key_count += 1
+
+    if fingers_up == [1,1,1,1,1] and isPaused:
+        isPaused = False
         PressKey(space_key_pressed)
         spacePressed = True
         current_key_pressed.add(space_key_pressed)
@@ -57,7 +70,7 @@ while True:
         key_count += 1
 
     if fingers_up == [1,0,0,0,0] and finger_direct == 'left':
-        cv2.putText(image, 'Action: go left', (120, 120), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 255), 2)
+        cv2.putText(image, 'Action: go left', (150, 150), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 255, 255), 2)
         PressKey(arrow_left_pressed)
         arrowLeftPressed = True
         current_key_pressed.add(arrow_left_pressed)
