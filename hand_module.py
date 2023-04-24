@@ -73,10 +73,25 @@ class HandDetector:
                 leftOrRight = 'right'
 
             # Check for thumb tip
-            left_thumb_up = leftOrRight == 'left' and self.land_mark_list[self.tips_id_list[0]][1] < self.land_mark_list[self.tips_id_list[0]-1][1]
-            right_thumb_up = leftOrRight == 'right' and self.land_mark_list[self.tips_id_list[0]][1] > self.land_mark_list[self.tips_id_list[0]-1][1]
+            left_thumb_up = leftOrRight == 'right' and self.land_mark_list[self.tips_id_list[0]][1] > self.land_mark_list[self.tips_id_list[0]-1][1]
+            right_thumb_up = leftOrRight == 'left' and self.land_mark_list[self.tips_id_list[0]][1] < self.land_mark_list[self.tips_id_list[0]-1][1]
 
-            direction = 'right' if left_thumb_up else 'left'
+            # Check for index finger tip
+            index_up = self.land_mark_list[self.tips_id_list[1]][2] < self.land_mark_list[self.tips_id_list[1]-1][2]
+            index_down = (self.land_mark_list[self.tips_id_list[1]][2] > self.land_mark_list[self.tips_id_list[1]-1][2]) and (self.land_mark_list[self.tips_id_list[1]-1][2] > self.land_mark_list[self.tips_id_list[1]-2][2]) and (self.land_mark_list[self.tips_id_list[1]-2][2] > self.land_mark_list[self.tips_id_list[1]-3][2])
+
+            thumb_direction = ''
+            index_direction = ''
+
+            if left_thumb_up:
+                thumb_direction = 'left'
+            elif right_thumb_up:
+                thumb_direction = 'right'
+
+            if index_up:
+                index_direction = 'up'
+            elif index_down:
+                index_direction = 'down'
 
             if left_thumb_up or right_thumb_up:
                 fingers_counter.append(1)
@@ -91,6 +106,6 @@ class HandDetector:
                 else:
                     fingers_counter.append(0)
 
-            return fingers_counter, direction
+            return fingers_counter, thumb_direction, index_direction
 
-        return None, ''
+        return None, '', ''
