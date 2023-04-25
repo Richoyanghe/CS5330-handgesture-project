@@ -3,14 +3,14 @@
 <hr>
 It should be noted that this game works for Windows platform, for Macintosh, we have trouble getting the permission from system settings. We are happy to learn from anyone who has a solution to this problem.
 <hr>
-1. Clone this repository to your local.
-2. run 'cd CS5330-handgesture-project'.
-3. Make sure you have python (at least 3.7+) installed on your device. Run 'python -m venv mp_env'.
-4. On Windows, run './mp_env/Scripts/Activate.ps1'. On Macintosh, run 'source mp_env/bin/activate'.
-5. Once you have the virtual environment set up, run 'pip install opencv && pip install mediapipe && pip install pygame'.
-6. Open Another terminal window. Cd to the cloned repository, set up the virtual environment again and run 'cd ./game/Pacman_Complete'
-7. Make sure you have No.1 terminal window on the 'CS5330-handgesture-project' directory, and have your No.2 terminal window on the 'CS5330-handgesture-project/game/Pacman_Complete' directory. Then, on the No.1 terminal window, run 'python module_test.py', and on your No.2 terminal window, run 'python run.py'. Now you should have your hand detection program and your game open.
-8. Adjust your two windows to a comfortable position, make sure the focus is on the game window and enjoy!
+- Clone this repository to your local.
+- run 'cd CS5330-handgesture-project'.
+- Make sure you have python (at least 3.7+) installed on your device. Run 'python -m venv mp_env'.
+- On Windows, run './mp_env/Scripts/Activate.ps1'. On Macintosh, run 'source mp_env/bin/activate'.
+- Once you have the virtual environment set up, run 'pip install opencv && pip install mediapipe && pip install pygame'.
+- Open Another terminal window. Cd to the cloned repository, set up the virtual environment again and run 'cd ./game/Pacman_Complete'
+- Make sure you have No.1 terminal window on the 'CS5330-handgesture-project' directory, and have your No.2 terminal window on the 'CS5330-handgesture-project/game/Pacman_Complete' directory. Then, on the No.1 terminal window, run 'python module_test.py', and on your No.2 terminal window, run 'python run.py'. Now you should have your hand detection program and your game open.
+- Adjust your two windows to a comfortable position, make sure the focus is on the game window and enjoy!
 <img src="./assets/game_test.png" title="game test"/>
 
 ## The game is accredited from open source project:
